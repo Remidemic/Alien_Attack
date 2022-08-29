@@ -1,3 +1,9 @@
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
 .aliens {
     /* display: flex; */
     border: 2px solid black;
@@ -14,8 +20,10 @@
 .alien {
     border: 20px solid black;
     width: 15%;
-    height: 50px;
+    height: 70px;
     background-image: url('alien_ship.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 .captian {
@@ -39,4 +47,8 @@
     background-image: url('alien_ship.png');
 }
 
-.buttons {}
+#screenlog {
+    border: 2px solid black;
+    width: 300px;
+    height: 100px;
+}

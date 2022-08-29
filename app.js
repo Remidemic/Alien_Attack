@@ -1,9 +1,4 @@
-// Example use of accuracy to determine a hit:
-
-// if (Math.random() < alien[0].accuracy) {
-//     console.log('You have been hit!');
-// }
-
+// make restart button using window.location.reload()
 
 
 let USS_HelloWorld = {
@@ -14,28 +9,94 @@ let USS_HelloWorld = {
 }
 
 // alien[0].accuracy
+// hull - between 3 and 6
+// firepower - between 2 and 4
+// accuracy - between .6 and .8
+// You could be battling six alien ships each with unique values.
 
-let AlienShip1 = {
-    name: "Alien",
+// Example use of accuracy to determine a hit:
+
+// if (Math.random() < alien[0].accuracy) {
+//     console.log('You have been hit!');
+
+// how to make 6 aliens - make a array of aliens. if alien hull === 0, array.pop. 
+
+let numOaliens = 6
+let AlienSquad = [{
+    name: "Alien 1",
     Hull: 3,
     Firepower: 3,
     accuracy: 0.5
-}
+}, {
+    name: "Alien 2",
+    Hull: 3,
+    Firepower: 3,
+    accuracy: 0.5
+}, {
+    name: "Alien 3",
+    Hull: 3,
+    Firepower: 3,
+    accuracy: 0.5
+}, {
+    name: "Alien 4",
+    Hull: 3,
+    Firepower: 3,
+    accuracy: 0.5
+}, {
+    name: "Alien 5",
+    Hull: 3,
+    Firepower: 3,
+    accuracy: 0.5
+}, {
+    name: "Alien 6",
+    Hull: 3,
+    Firepower: 3,
+    accuracy: 0.5
+}]
+
+
+// class Aliens {
+//     constructor(name) {
+//         this.name = name
+//         this.hull = hull
+//         this.firePower = fire.power
+//         this.Acuracy = this.Acuracy
+//     }
+// }
+
+
+
+
+// mess ^
+
+// ONE ALIEN 
+// let AlienShip1 = {
+//     name: "Alien",
+//     Hull: 3,
+//     Firepower: 3,
+//     accuracy: 0.5
+// }
 
 
 checkScore = () => {
     console.log(USS_HelloWorld);
-    console.log(AlienShip1);
+    console.log(AlienSquad[0]);
 }
 
+// ONE ALIEN 
+// const attackAlien = () => {
+//     AlienShip1.Hull -= 5;
+//     USS_HelloWorld.Firepower--;
+// }
+
 const attackAlien = () => {
-    AlienShip1.Hull -= 5;
+    AlienSquad[0].Hull -= 5;
     USS_HelloWorld.Firepower--;
 }
 
 const attackUSS = () => {
     USS_HelloWorld.Hull -= 3;
-    AlienShip1.Firepower--;
+    AlienSquad[0].Firepower--;
 }
 
 // ask in office hours how to do this restart everything back to original numbers
@@ -57,16 +118,11 @@ const GameOver = () => {
     console.log("game over ${winner} wins")
 }
 
-const PlayerAttact = () => {
-
-    // if (player accuracy is greater than accuracy) {
-    // log hit
-}
 
 // each round is 1 button click 
 
-// this will activate the button
 
+// this is the ATTACK Button 
 let Match = 0
 
 const MatchCount = () => {
@@ -76,7 +132,7 @@ const MatchCount = () => {
 
 const AttackAlienResult = () => {
     console.log("USS Fire 1");
-    if (Math.random() < AlienShip1.accuracy) {
+    if (Math.random() < AlienSquad[0].accuracy) {
         attackAlien();
         checkScore();
         console.log('You hit alien target!');
@@ -89,23 +145,41 @@ const AttackAlienResult = () => {
         console.log('You have been hit!');
     } else { console.log('alien missed USS Hello world') }
 
-
-
-    if (AlienShip1.Hull <= 0) {
-        console.log("USS WINS")
+    if (AlienSquad[0].Hull <= 0) {
+        console.log("USS WINS");
+        window.alert("you destroyed the alien. congratulations. there are " + numOaliens-- + " still up there. Do you want more?");
+        AlienSquad.shift();
     }
     if (USS_HelloWorld.Hull <= 0) {
         console.log("YOU LOSE")
+        window.alert("you ded.");
+
     }
 
     MatchCount()
+
+    document.querySelector('#HEALTH').innerHTML = ("LIFE LEFT " + USS_HelloWorld.Hull);
 }
+
+
 
 let AttackButton = document.getElementById("AttackButton");
 AttackButton.addEventListener("click", AttackAlienResult);
 
-// attack button will : determine if oponent is hit 
-// if oponent is hit, use AttackAlien function, console log results.
+
+const restartbtn = () => {
+    globalThis.location.reload()
+}
+
+
+
+let RestartButton = document.getElementById("restartButton");
+RestartButton.addEventListener("click", restartbtn);
+
+
+
+
+// attack button END 
 
 
 // const RestartGame = () => {
@@ -124,14 +198,6 @@ AttackButton.addEventListener("click", AttackAlienResult);
 
 
 
-
-// You attack the first alien ship
-
-// If the ship survives, it attacks you
-
-// If you survive, you attack the ship again
-
-// If it survives, it attacks you again … etc
 
 // If you destroy the ship, you have the option to attack the next ship or to retreat
 
