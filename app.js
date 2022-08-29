@@ -13,6 +13,8 @@ let USS_HelloWorld = {
     accuracy: 0.8
 }
 
+// alien[0].accuracy
+
 let AlienShip1 = {
     name: "Alien",
     Hull: 3,
@@ -21,29 +23,28 @@ let AlienShip1 = {
 }
 
 
-
-
 checkScore = () => {
     console.log(USS_HelloWorld);
     console.log(AlienShip1);
 }
 
 const attackAlien = () => {
-    AlienShip1.Hull--;
+    AlienShip1.Hull = -5;
     USS_HelloWorld.Firepower--;
 }
 
 const attackUSS = () => {
-    USS_HelloWorld.Hull--;
+    USS_HelloWorld.Hull = -3;
     AlienShip1.Firepower--;
 }
 
 checkScore();
-attackAlien();
-attackAlien();
+attackUSS();
 checkScore();
 attackAlien();
-attackAlien();
+checkScore();
+
+
 
 
 if (AlienShip1.Hull <= 0) {
@@ -56,3 +57,21 @@ if (USS_HelloWorld.Hull <= 0) {
 const GameOver = () => {
     console.log("game over ${winner} wins")
 }
+
+const PlayerAttact = () => {
+    // if (player accuracy is greater than accuracy) {
+    // log hit
+}
+
+
+const AttackAlienButton = () => {
+    if (Math.random() < alien[0].accuracy) {
+        attackAlien();
+        console.log('You have been hit!');
+
+    }
+}
+
+
+// attack button will : determine if oponent is hit 
+// if oponent is hit, use AttackAlien function, console log results.
