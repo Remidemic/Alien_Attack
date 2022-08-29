@@ -1,0 +1,58 @@
+<!-- Build a game of battling alien spaceships using Javascript.
+Earth has been attacked by a horde of aliens! You are the captain of the USS HelloWorld, on a mission to destroy every last alien ship.
+Battle the aliens as you try to destroy them with your lasers.
+There are six alien ships. The aliens' weakness is that they are too logical and attack one at a time: they will wait to see the outcome of a battle before deploying another alien ship. Your strength is that you have the initiative and get to attack first. However, you do not have targeting lasers and can only attack the aliens in order. After you have destroyed a ship, you have the option to make a hasty retreat.
+A game round would look like this:
+You attack the first alien ship
+If the ship survives, it attacks you
+If you survive, you attack the ship again
+If it survives, it attacks you again … etc
+If you destroy the ship, you have the option to attack the next ship or to retreat
+If you retreat, the game is over, perhaps leaving the game open for further developments or options
+You win the game if you destroy all of the aliens
+You lose the game if you are destroyed -->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Alien Attack</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>SPACE WARS</h1>
+    <div class="earth">
+
+        <div class="aliens">
+            <div class="alienShips">
+                <div class="alien" id="A1"></div>
+                <div class="alien" id="A2"></div>
+                <div class="alien" id="A3"></div>
+                <div class="alien" id="A4"></div>
+                <div class="alien" id="A5"></div>
+                <div class="alien" id="A6"></div>
+            </div>
+        </div>
+
+        <div class="captian">
+            <div class="captainShip"></div>
+        </div>
+
+
+
+    </div>
+
+
+
+
+
+    <script src="app.js" async defer></script>
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+.aliens {
+    /* display: flex; */
+    border: 2px solid black;
+    height: 100px;
+}
+
+.alienShips {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 2px solid black;
+}
+
+.alien {
+    border: 20px solid black;
+    width: 15%;
+    height: 50px;
+    background-image: url('alien_ship.png');
+}
