@@ -1,5 +1,6 @@
 // make restart button using window.location.reload()
 
+window.confirm(" GET READY TO FIGHT SOME ALIENS!!!")
 
 let USS_HelloWorld = {
     name: "USS",
@@ -8,25 +9,27 @@ let USS_HelloWorld = {
     accuracy: 0.8
 }
 
-// alien[0].accuracy
-// hull - between 3 and 6
-// firepower - between 2 and 4
-// accuracy - between .6 and .8
-// You could be battling six alien ships each with unique values.
+{
+    // alien[0].accuracy
+    // hull - between 3 and 6
+    // firepower - between 2 and 4
+    // accuracy - between .6 and .8
+    // You could be battling six alien ships each with unique values.
 
-// Example use of accuracy to determine a hit:
+    // Example use of accuracy to determine a hit:
 
-// if (Math.random() < alien[0].accuracy) {
-//     console.log('You have been hit!');
+    // if (Math.random() < alien[0].accuracy) {
+    //     console.log('You have been hit!');
 
-// how to make 6 aliens - make a array of aliens. if alien hull === 0, array.pop. 
+    // how to make 6 aliens - make a array of aliens. if alien hull === 0, array.pop. 
+}
 
-let numOaliens = 6
 let AlienSquad = [{
     name: "Alien 1",
     Hull: 3,
     Firepower: 3,
-    accuracy: 0.5
+    accuracy: 0.5,
+
 }, {
     name: "Alien 2",
     Hull: 3,
@@ -54,16 +57,8 @@ let AlienSquad = [{
     accuracy: 0.5
 }]
 
+let numOaliens = AlienSquad.length
 
-// mess ^
-
-// ONE ALIEN 
-// let AlienShip1 = {
-//     name: "Alien",
-//     Hull: 3,
-//     Firepower: 3,
-//     accuracy: 0.5
-// }
 
 
 checkScore = () => {
@@ -71,11 +66,6 @@ checkScore = () => {
     console.log(AlienSquad[0]);
 }
 
-// ONE ALIEN 
-// const attackAlien = () => {
-//     AlienShip1.Hull -= 5;
-//     USS_HelloWorld.Firepower--;
-// }
 
 const attackAlien = () => {
     AlienSquad[0].Hull -= 5;
@@ -86,19 +76,6 @@ const attackUSS = () => {
     USS_HelloWorld.Hull -= 3;
     AlienSquad[0].Firepower--;
 }
-
-// ask in office hours how to do this restart everything back to original numbers
-const restartGame = () => {
-
-}
-
-// checkScore();
-// attackUSS();
-// checkScore();
-// attackAlien();
-// checkScore();
-
-
 
 
 
@@ -118,9 +95,9 @@ const MatchCount = () => {
     console.log('XXXX  Match ' + Match + ' complete XXXX')
 }
 
-// let gameHistory = () => {
-//     document.querySelector('#screenlog').innerHTML = ('match count ${MatchCount}')
-// }
+let ScreenLog = document.querySelector('#screenlog').innerHTML;
+ScreenLog
+
 
 
 const AttackAlienResult = () => {
@@ -129,6 +106,8 @@ const AttackAlienResult = () => {
         attackAlien();
         checkScore();
         console.log('You hit alien target!');
+        document.querySelector('#screenlog').innerHTML = ('You hit alien target!');
+
     } else { console.log('you missed alien target') };
 
     console.log("Alien Fire 1");
@@ -136,23 +115,32 @@ const AttackAlienResult = () => {
         attackUSS();
         checkScore();
         console.log('You have been hit!');
+        document.querySelector('#screenlog').innerHTML = ('You have been hit!');
+
     } else { console.log('alien missed USS HelloWorld') }
 
     if (AlienSquad[0].Hull <= 0) {
         console.log("USS WINS");
-        window.alert("you destroyed the alien. congratulations. there are " + numOaliens-- + " still up there. Do you want more?");
+        document.querySelector('#screenlog').innerHTML = ('USS WINS');
+        numOaliens--;
+        window.alert("you destroyed the alien. congratulations. there are " + numOaliens + " still up there. Do you want more?");
         AlienSquad.shift();
+        let enemy = document.querySelector('.alien')
+        enemy.remove()
     }
     if (USS_HelloWorld.Hull <= 0) {
         console.log("YOU LOSE")
+        document.querySelector('#screenlog').innerHTML = ("YOU LOSE");
         window.alert("you ded.");
-
     }
 
     MatchCount()
+    document.querySelector('#screenlog').innerHTML = ('XXXX  Match ' + Match + ' complete XXXX' + ' \n Aliens Remaining ' + numOaliens);
 
 
     document.querySelector('#HEALTH').innerHTML = ("LIFE LEFT " + USS_HelloWorld.Hull);
+
+
 }
 
 
