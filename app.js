@@ -55,18 +55,6 @@ let AlienSquad = [{
 }]
 
 
-// class Aliens {
-//     constructor(name) {
-//         this.name = name
-//         this.hull = hull
-//         this.firePower = fire.power
-//         this.Acuracy = this.Acuracy
-//     }
-// }
-
-
-
-
 // mess ^
 
 // ONE ALIEN 
@@ -130,20 +118,25 @@ const MatchCount = () => {
     console.log('XXXX  Match ' + Match + ' complete XXXX')
 }
 
+// let gameHistory = () => {
+//     document.querySelector('#screenlog').innerHTML = ('match count ${MatchCount}')
+// }
+
+
 const AttackAlienResult = () => {
     console.log("USS Fire 1");
     if (Math.random() < AlienSquad[0].accuracy) {
         attackAlien();
         checkScore();
         console.log('You hit alien target!');
-    } else { console.log('you missed') };
+    } else { console.log('you missed alien target') };
 
     console.log("Alien Fire 1");
     if (Math.random() < USS_HelloWorld.accuracy) {
         attackUSS();
         checkScore();
         console.log('You have been hit!');
-    } else { console.log('alien missed USS Hello world') }
+    } else { console.log('alien missed USS HelloWorld') }
 
     if (AlienSquad[0].Hull <= 0) {
         console.log("USS WINS");
@@ -158,21 +151,19 @@ const AttackAlienResult = () => {
 
     MatchCount()
 
+
     document.querySelector('#HEALTH').innerHTML = ("LIFE LEFT " + USS_HelloWorld.Hull);
 }
-
 
 
 let AttackButton = document.getElementById("AttackButton");
 AttackButton.addEventListener("click", AttackAlienResult);
 
 
+// RESTART BUTTON
 const restartbtn = () => {
     globalThis.location.reload()
 }
-
-
-
 let RestartButton = document.getElementById("restartButton");
 RestartButton.addEventListener("click", restartbtn);
 

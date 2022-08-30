@@ -44,7 +44,9 @@ nav {
     border: 20px solid black;
     width: 15%;
     height: 50px;
-    background-image: url('alien_ship.png');
+    background-image: url('tankpic.png');
+    background-size: contain;
+    background-repeat: no-repeat;
 }
 
 #screenlog {
