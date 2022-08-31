@@ -2,57 +2,23 @@
 
 // center.innerHTML=(`You Started with ${player.hull} health.<br>`);
 
-// window.confirm(" GET READY TO FIGHT SOME ALIENS!!!")
+window.confirm(" GET READY TO FIGHT SOME ALIENS!!!")
 
 let USS_HelloWorld = {
     name: "USS",
     Hull: 20,
-    Firepower: 5,
-    accuracy: 0.7
+    Firepower: 3,
+    accuracy: 0.8
 }
 
 
 
-let randNum = (min, max) => {
-    return Math.floor(Math.random() * (max - min + 1) + min)
-}
+// Example use of accuracy to determine a hit:
 
-let AlienSquad = []
+// if (Math.random() < alien[0].accuracy) {
+//     console.log('You have been hit!');
 
-for (let i = 1; i < randNum(5, 8); i++) {
-
-    AlienSquad.push({
-        name: "Alien " + i,
-        Hull: randNum(3, 6),
-        Firepower: randNum(2, 4),
-        accuracy: 0.6
-    })
-}
-
-console.log(AlienSquad)
-
-
-
-
-
-// alien[0].accuracy
-// hull - between 3 and 6
-// firepower - between 2 and 4
-// accuracy - between .6 and .8
-// You could be battling six alien ships each with unique values.
-console.log(AlienSquad.length)
-
-const alienShips = document.querySelector('.alienShips')
-
-for (let i = 0; i < AlienSquad.length; i++) {
-
-    const newDiv = document.createElement('div')
-    newDiv.setAttribute('class', 'alien')
-    alienShips.appendChild(newDiv)
-}
-
-
-// alienShips.appendChild(newDiv)
+// how to make 6 aliens - make a array of aliens. if alien hull === 0, array.pop. 
 
 
 // let oldaliens = [{
@@ -87,6 +53,44 @@ for (let i = 0; i < AlienSquad.length; i++) {
 //     Firepower: 3,
 //     accuracy: 0.5
 // }]
+
+
+
+
+// make array of random aliens 
+
+const alienShips = document.querySelector('.alienShips');
+let AlienSquad = []
+
+for (let i = 0; i < AlienSquad.length; i++) {
+    const newDiv = document.createElement('div')
+    newDiv.innerHTML = `class="alien"`
+
+    alienShips.appendChild(newDiv)
+}
+
+let randNum = (min, max) => {
+    return Math.floor(Math.random() * (max - min + 1) + min)
+}
+
+
+for (let i = 0; i < randNum(5, 10); i++) {
+
+    AlienSquad.push({
+        name: "Alien 1",
+        Hull: randNum(3, 6),
+        Firepower: randNum(2, 4),
+        accuracy: randNum(0.6, 0.8)
+
+    })
+}
+
+console.log(AlienSquad.length);
+// array end 
+
+
+// make as many aliens in array into img divs in game 
+
 
 let numOaliens = AlienSquad.length
 
@@ -127,8 +131,9 @@ const MatchCount = () => {
 }
 
 let ScreenLog = document.querySelector('#screenlog').innerHTML;
+ScreenLog
 
-document.querySelector('#screenlog').innerHTML = ("Remaining aliens " + AlienSquad.length + " <br> ")
+document.querySelector('#screenlog').innerHTML = ("Remaining aliens " + AlienSquad.length)
 
 const AttackAlienResult = () => {
 
@@ -137,12 +142,12 @@ const AttackAlienResult = () => {
     if (Math.random() < AlienSquad[0].accuracy) {
         attackAlien();
         checkScore();
-        console.log('You hit alien target! <br>');
+        console.log('You hit alien target!');
         document.querySelector('#screenlog').innerHTML += ('<br> You hit alien target!');
 
     } else {
         console.log('you missed alien target');
-        document.querySelector('#screenlog').innerHTML += ('<br> you missed alien target')
+        document.querySelector('#screenlog').innerHTML += ('you missed alien target')
     };
 
     console.log("Alien Fire 1");
@@ -154,7 +159,7 @@ const AttackAlienResult = () => {
 
     } else {
         console.log('alien missed USS HelloWorld')
-        document.querySelector('#screenlog').innerHTML += ('<br>alien missed USS HelloWorld')
+        document.querySelector('#screenlog').innerHTML += ('alien missed USS HelloWorld')
     }
 
     if (AlienSquad[0].Hull <= 0) {
@@ -168,22 +173,18 @@ const AttackAlienResult = () => {
     }
     if (USS_HelloWorld.Hull <= 0) {
         console.log("YOU LOSE")
-        document.querySelector('#screenlog').innerHTML += ("<br> YOU LOSE");
+        document.querySelector('#screenlog').innerHTML += ("YOU LOSE");
         window.alert("you ded.");
     }
 
     MatchCount()
-    document.querySelector('#screenlog').innerHTML += ('<br> XXXX  Match ' + Match + ' complete XXXX <br>' + ' <br> Aliens Remaining ' + numOaliens);
+    document.querySelector('#screenlog').innerHTML += ('XXXX  Match ' + Match + ' complete XXXX' + ' <br> Aliens Remaining ' + numOaliens);
 
 
     document.querySelector('#HEALTH').innerHTML = ("LIFE LEFT " + USS_HelloWorld.Hull);
 
-    if (numOaliens === 0) {
-        window.alert("YOU DEFEATED ALL THE ALIENS!!! <br> YOU SAVED THE PLANET!!!!")
-    }
 
 }
-
 
 
 let AttackButton = document.getElementById("AttackButton");
