@@ -128,7 +128,7 @@ const MatchCount = () => {
 
 let ScreenLog = document.querySelector('#screenlog').innerHTML;
 
-document.querySelector('#screenlog').innerHTML = ("Remaining aliens " + AlienSquad.length + " <br> ")
+document.querySelector('#screenlog').innerHTML = ("Remaining Aliens: " + AlienSquad.length + " <br> ")
 
 const AttackAlienResult = () => {
 
@@ -137,12 +137,12 @@ const AttackAlienResult = () => {
     if (Math.random() < AlienSquad[0].accuracy) {
         attackAlien();
         checkScore();
-        console.log('You hit alien target! <br>');
-        document.querySelector('#screenlog').innerHTML += ('<br> You hit alien target!');
+        console.log('You hit Alien target! <br>');
+        document.querySelector('#screenlog').innerHTML += ('<br> You hit Alien target!');
 
     } else {
-        console.log('you missed alien target');
-        document.querySelector('#screenlog').innerHTML += ('<br> you missed alien target')
+        console.log('you missed Alien target');
+        document.querySelector('#screenlog').innerHTML += ('<br> you missed Alien target')
     };
 
     console.log("Alien Fire 1");
@@ -154,14 +154,14 @@ const AttackAlienResult = () => {
 
     } else {
         console.log('alien missed USS HelloWorld')
-        document.querySelector('#screenlog').innerHTML += ('<br>alien missed USS HelloWorld')
+        document.querySelector('#screenlog').innerHTML += ('<br>Alien missed USS HelloWorld')
     }
 
     if (AlienSquad[0].Hull <= 0) {
         console.log("USS WINS");
         document.querySelector('#screenlog').innerHTML += ('<br> USS WINS');
         numOaliens--;
-        window.alert("you destroyed the alien. congratulations. there are " + numOaliens + " still up there. Do you want more?");
+        window.alert("you destroyed the Alien. congratulations! there are " + numOaliens + " still up there. Do you want more?");
         AlienSquad.shift();
         let enemy = document.querySelector('.alien')
         enemy.remove()
